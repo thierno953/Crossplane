@@ -1,0 +1,9 @@
+---
+awsRegion: eu-west-3
+autoDiscovery:
+  clusterName: dev-stage
+rbac:
+  serviceAccount:
+    name: cluster-autoscaler
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::424432388155:role/cluster-autoscaler

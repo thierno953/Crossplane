@@ -1,0 +1,72 @@
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: dev-private-eu-west-3a
+  labels:
+    name: dev-private-eu-west-3a
+spec:
+  forProvider:
+    availabilityZone: eu-west-3a
+    cidrBlock: 10.0.0.0/19
+    region: eu-west-3
+    tags:
+      Name: dev-private-eu-west-3a
+      kubernetes.io/role/internal-elb: "1"
+      kubernetes.io/cluster/dev-stage: "owned"
+    vpcIdRef:
+      name: dev-main
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: dev-private-eu-west-3b
+  labels:
+    name: dev-private-eu-west-3b
+spec:
+  forProvider:
+    availabilityZone: eu-west-3b
+    cidrBlock: 10.0.32.0/19
+    region: eu-west-3
+    tags:
+      Name: dev-private-eu-west-3b
+      kubernetes.io/role/internal-elb: "1"
+      kubernetes.io/cluster/dev-stage: "owned"
+    vpcIdRef:
+      name: dev-main
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: dev-public-eu-west-3a
+  labels:
+    name: dev-public-eu-west-3a
+spec:
+  forProvider:
+    availabilityZone: eu-west-3a
+    cidrBlock: 10.0.64.0/19
+    region: eu-west-3
+    tags:
+      Name: dev-public-eu-west-3a
+      kubernetes.io/role/elb: "1"
+      kubernetes.io/cluster/dev-stage: "owned"
+    vpcIdRef:
+      name: dev-main
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: dev-public-eu-west-3b
+  labels:
+    name: dev-public-eu-west-3b
+spec:
+  forProvider:
+    availabilityZone: eu-west-3b
+    cidrBlock: 10.0.96.0/19
+    region: eu-west-3
+    tags:
+      Name: dev-public-eu-west-3b
+      kubernetes.io/role/elb: "1"
+      kubernetes.io/cluster/dev-stage: "owned"
+    vpcIdRef:
+      name: dev-main

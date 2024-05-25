@@ -1,0 +1,19 @@
+---
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    uptest.upbound.io/timeout: "2400"
+  name: dev-stage
+spec:
+  forProvider:
+    version: "1.29"
+    region: eu-west-3
+    roleArnRef:
+      name: dev-stage-eks-cluster
+    vpcConfig:
+      - endpointPrivateAccess: false
+        endpointPublicAccess: true
+        subnetIdRefs:
+          - name: dev-private-eu-west-3a
+          - name: dev-private-eu-west-3b
